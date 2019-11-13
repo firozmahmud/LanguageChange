@@ -12,7 +12,7 @@ import java.util.Locale;
 public class LanguageHelper {
     private static final String SELECTED_LANGUAGE = "Language.Helper.Selected.Language";
 
-    public static Context onAttach(Context context) {
+   /* public static Context onAttach(Context context) {
         return setLanguage(context, getPersistedData(context, Locale.getDefault().getLanguage()));
     }
 
@@ -22,16 +22,16 @@ public class LanguageHelper {
 
     public static String getLanguage(Context context) {
         return getPersistedData(context, Locale.getDefault().getLanguage());
-    }
+    }*/
 
     public static Context setLanguage(Context context, String str) {
         persist(context, str);
         return updateResourcesLegacy(context, str);
     }
 
-    public static String getPersistedData(Context context, String str) {
+   /* public static String getPersistedData(Context context, String str) {
         return PreferenceManager.getDefaultSharedPreferences(context).getString(SELECTED_LANGUAGE, str);
-    }
+    }*/
 
     private static void persist(Context context, String str) {
         Editor edit = PreferenceManager.getDefaultSharedPreferences(context).edit();
@@ -39,7 +39,7 @@ public class LanguageHelper {
         edit.apply();
     }
 
-    @TargetApi(24)
+/*    @TargetApi(24)
     private static Context updateResources(Context context, String str) {
         Locale locale = new Locale(str);
         Locale.setDefault(locale);
@@ -48,7 +48,7 @@ public class LanguageHelper {
         LocaleList.setDefault(localeList);
         configuration.setLocales(localeList);
         return context.createConfigurationContext(configuration);
-    }
+    }*/
 
     private static Context updateResourcesLegacy(Context context, String str) {
         Locale locale = new Locale(str);
